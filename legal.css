@@ -76,3 +76,13 @@ body {
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
+
+.policy-box ul {
+    color: #c9c9d3;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+
+.policy-box li {
+    margin-bottom: 10px;
+}
