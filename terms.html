@@ -24,12 +24,6 @@
             </div>
         </header>
         <main class="policy-box">
-            </main>
-    </div>
-    <script src="page_script.js"></script>
-</body>
-</html>
-        <main class="policy-box">
             <div class="lang-content" id="en-content">
                 <h1>Terms of Service (ToS)</h1>
                 <p class="effective-date">Effective Date: 05/16/2025</p>
@@ -71,20 +65,6 @@
             </div>
         </main>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const langSwitcher = document.getElementById('lang-switcher');
-            const contentDivs = document.querySelectorAll('.lang-content');
-            const setPageLanguage = (lang) => {
-                contentDivs.forEach(div => { div.style.display = 'none'; });
-                const activeDiv = document.getElementById(lang + '-content');
-                if (activeDiv) { activeDiv.style.display = 'block'; }
-                localStorage.setItem('xo-arena-lang', lang);
-                langSwitcher.value = lang;
-            };
-            langSwitcher.addEventListener('change', (e) => setPageLanguage(e.target.value));
-            setPageLanguage(localStorage.getItem('xo-arena-lang') || 'en');
-        });
-    </script>
+    <script src="page_script.js"></script>
 </body>
 </html>
