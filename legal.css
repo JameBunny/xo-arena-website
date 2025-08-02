@@ -26,7 +26,7 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.container { max-width: 800px; margin: 40px auto; }
+.container { max-width: 800px; margin: 20px auto; }
 
 .legal-header {
     display: flex;
@@ -80,7 +80,7 @@ h1 { font-size: 2.8rem; font-weight: 700; margin-top: 0; margin-bottom: 10px; te
 }
 .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 html[data-theme="dark"] .product-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-.product-image-container { background-color: #fff; padding: 10px; } /* White background for sticker */
+.product-image-container { background-color: #fff; padding: 10px; }
 .product-image-container img { width: 100%; height: auto; display: block; border-radius: 10px; }
 .product-info { padding: 20px; flex-grow: 1; }
 .product-title { font-size: 1.2rem; font-weight: 600; margin: 0 0 10px; }
@@ -112,3 +112,14 @@ html[data-theme="dark"] .buy-button:hover { background-color: #606cfa; }
 .policy-box p { color: var(--legal-text-secondary); margin-bottom: 15px; font-size: 1.1rem; }
 .policy-box ul { color: var(--legal-text-secondary); padding-left: 20px; font-size: 1.1rem; }
 .policy-box li { margin-bottom: 10px; }
+
+/* --- !! Responsive Styles Added Here !! --- */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .container { margin: 10px auto; }
+    .legal-header { flex-direction: column; gap: 20px; }
+    h1 { font-size: 2.2rem; }
+    .shop-description { font-size: 1rem; }
+    .product-grid { grid-template-columns: 1fr; } /* Force single column on mobile */
+    .policy-box { padding: 25px 20px; }
+}
