@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
             <a href="index.html" class="back-link">← Back to Home</a>
             <div class="header-controls">
                 <select id="lang-switcher">
-                    <option value="en">🇺🇸 English</option>
+                    <option value="en">🇬🇧 English</option>
                     <option value="th">🇹🇭 ไทย</option>
                     <option value="ja">🇯🇵 日本語</option>
                 </select>
@@ -23,6 +23,25 @@
                 </button>
             </div>
         </header>
+        <main class="policy-box">
+            <div class="lang-content" id="en-content">
+                <h1>Terms of Service (ToS)</h1>
+                <p class="effective-date">Effective Date: 05/16/2025</p>
+                <h2>1. Introduction</h2><p>Welcome to XO Arena Bot! By using this bot, you agree to the terms of service outlined below...</p>
+                </div>
+            <div class="lang-content" id="th-content" style="display:none;">
+                <h1>ข้อกำหนดในการให้บริการ (ToS)</h1>
+                <p class="effective-date">มีผลบังคับใช้: 16/05/2025</p>
+                </div>
+            <div class="lang-content" id="ja-content" style="display:none;">
+                <h1>XO Arena Botの利用規約</h1>
+                <p class="effective-date">発効日: 2025/05/16</p>
+                </div>
+        </main>
+    </div>
+    <script src="page_script.js"></script>
+</body>
+</html>
         <main class="policy-box">
             <div class="lang-content" id="en-content">
                 <h1>Terms of Service (ToS)</h1>
