@@ -33,26 +33,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Hero Image 3D Mouse Follow ---
-    const heroImage = document.getElementById('hero-image');
-    const heroSection = document.querySelector('.hero-section');
-    if (heroImage && heroSection) {
-        heroSection.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = heroSection;
-            const x = (clientX - offsetLeft - offsetWidth / 2) / (offsetWidth / 2);
-            const y = (clientY - offsetTop - offsetHeight / 2) / (offsetHeight / 2);
+    // --- Slideshow Logic ---
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    let slideInterval;
 
-            requestAnimationFrame(() => {
-                heroImage.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
-            });
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            dots[i].classList.remove('active');
         });
-        heroSection.addEventListener('mouseleave', () => {
-            requestAnimationFrame(() => {
-                heroImage.style.transform = 'rotateY(0deg) rotateX(0deg)';
-            });
-        });
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
     }
+
+    function nextSlide() {
+        let next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+    }
+
+    function startSlideShow() {
+        stopSlideShow(); // Ensure no multiple intervals are running
+        slideInterval = setInterval(nextSlide, 5000); // Change image every 5 seconds
+    }
+
+    function stopSlideShow() {
+        clearInterval(slideInterval);
+    }
+
+    if (slides.length > 0 && dots.length > 0) {
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                showSlide(slideIndex);
+                startSlideShow(); // Restart timer on manual click
+            });
+        });
+        startSlideShow();
+    }
+
 
     // --- Language Translation ---
     const translations = {
