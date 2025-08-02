@@ -1,24 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    // Hamburger Menu Logic
     const hamburgerButton = document.getElementById('hamburger-button');
     const hamburgerImage = document.getElementById('hamburger-image');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
 
-    // Hamburger Menu Open/Close Logic
     hamburgerButton.addEventListener('click', () => {
         hamburgerButton.classList.toggle('active');
         navLinks.classList.toggle('active');
         body.classList.toggle('noscroll');
     });
 
-    // 3D Mouse Follow Logic for Hamburger Image
     hamburgerButton.addEventListener('mousemove', (e) => {
         const rect = hamburgerButton.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        const rotateY = (x / rect.width) * 30;
-        const rotateX = -(y / rect.height) * 30;
+        const rotateY = (x / rect.width) * 20;
+        const rotateX = -(y / rect.height) * 20;
         
         requestAnimationFrame(() => {
             hamburgerImage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             hamburgerButton.classList.remove('active');
@@ -39,7 +36,28 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.remove('noscroll');
         });
     });
-    
+
+    // Hero Image 3D Mouse Follow
+    const heroImage = document.getElementById('hero-image');
+    const heroSection = document.querySelector('.hero-section');
+    if (heroImage && heroSection) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const { offsetWidth, offsetHeight } = heroSection;
+            const x = (clientX - heroSection.offsetLeft - offsetWidth / 2) / (offsetWidth / 2);
+            const y = (clientY - heroSection.offsetTop - offsetHeight / 2) / (offsetHeight / 2);
+
+            requestAnimationFrame(() => {
+                heroImage.style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 15}deg)`;
+            });
+        });
+        heroSection.addEventListener('mouseleave', () => {
+            requestAnimationFrame(() => {
+                heroImage.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        });
+    }
+
     // Language Translation
     const translations = {
         en: { nav_features: "Features", nav_shop: "Shop", nav_commands: "Commands", nav_support: "Support", hero_title: "The Ultimate Tic-Tac-Toe Experience.", hero_subtitle: "Challenge your friends or our smart AI. Simple, fun, and competitive.", hero_cta_add: "Add to Discord", hero_cta_vote: "Vote for Bot", features_title: "Powerful Features", feature_1_title: "Play with Friends or Bot", feature_1_desc: "Challenge a friend for a classic match or test your skills against our smart AI.", feature_2_title: "Leaderboards & Stats", feature_2_desc: "Track your wins, losses, and draws. Climb the leaderboard to become the champion.", feature_3_title: "Multi-Language Support", feature_3_desc: "Play in Thai, English, or Japanese. The bot adapts to your preferred language.", commands_title: "All Commands", cmd_play: "Starts a game with another player.", cmd_playbot: "Starts a game against the AI bot.", cmd_stop: "Stops the current game.", cmd_leaderboard: "Shows the server's top players.", cmd_stats: "View your or another player's stats.", cmd_setlanguage: "Changes the bot's language.", footer_terms: "Terms of Service", footer_privacy: "Privacy Policy", follow_us: "Follow our developer" },
