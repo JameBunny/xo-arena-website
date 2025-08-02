@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             */
 
             // --- โค้ดตัวอย่างสำหรับแสดงผล (ลบออกเมื่อใช้ API จริง) ---
-            const randomServers = (1500 + Math.floor(Math.random() * 100)).toLocaleString();
-            const randomUsers = (89000 + Math.floor(Math.random() * 1000)).toLocaleString();
+            const randomServers = (75  + Math.floor(Math.random() * 100)).toLocaleString();
+            const randomUsers = (11,250  + Math.floor(Math.random() * 1000)).toLocaleString();
             if (serverCountEl.textContent !== randomServers) {
                 serverCountEl.textContent = randomServers;
                 animateValueUpdate(serverCountEl);
