@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     langSwitcher.addEventListener('change', (e) => setLanguage(e.target.value));
     setLanguage(localStorage.getItem('xo-arena-lang') || 'en');
 
-    // Scroll Reveal Animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) { entry.target.classList.add('visible'); }
