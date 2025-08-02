@@ -1,6 +1,39 @@
+// --- WidgetBot Setup ---
+const widgetBotScript = document.createElement('script');
+widgetBotScript.src = 'https://cdn.jsdelivr.net/npm/@widgetbot/crate@3';
+widgetBotScript.async = true;
+widgetBotScript.defer = true;
+widgetBotScript.onload = function () {
+  new Crate({
+    server: '1334985396127404113', // ID เซิร์ฟเวอร์ของคุณ
+
+    // !! เพิ่มบรรทัดนี้เพื่อกำหนดช่องเริ่มต้น !!
+    channel: '1366116183757295816', 
+    
+    // ใส่ ID ของช่อง หรือ ID ของหมวดหมู่ที่ต้องการซ่อนใน array นี้
+    deny: [
+        '1337872901935726654',
+        '1334985396731514881',
+        '1334985396731514884',
+        '1334985396890632344',
+        '1334985397037563965',
+        '1366476856391630940',
+        '1366477115242975312',
+        '1334985397037563973',
+        '1334985397175980166', // <-- เพิ่มลูกน้ำตรงนี้
+        '1334985396580257853',
+        '1334985396580257854',
+        '1334985396580257855',
+        '1334985396580257856'
+    ]
+
+  });
+};
+document.head.appendChild(widgetBotScript);
+
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Theme Switcher Logic ---
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -14,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Hamburger Menu Logic ---
     const hamburgerButton = document.getElementById('hamburger-button');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
@@ -33,13 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Slideshow Logic ---
+    // Slideshow Logic
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
     let slideInterval;
 
     function showSlide(index) {
+        if (slides.length === 0 || dots.length === 0) return;
         slides.forEach((slide, i) => {
             slide.classList.remove('active');
             dots[i].classList.remove('active');
@@ -50,14 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextSlide() {
+        if (slides.length === 0) return;
         let next = (currentSlide + 1) % slides.length;
         showSlide(next);
     }
 
     function startSlideShow() {
-        stopSlideShow(); // Ensure no multiple intervals are running
-        slideInterval = setInterval(nextSlide, 5000); // Change image every 5 seconds
+        stopSlideShow();
+        slideInterval = setInterval(nextSlide, 5000);
     }
+
+
 
     function stopSlideShow() {
         clearInterval(slideInterval);
@@ -68,14 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.addEventListener('click', (e) => {
                 const slideIndex = parseInt(e.target.getAttribute('data-slide'));
                 showSlide(slideIndex);
-                startSlideShow(); // Restart timer on manual click
+                startSlideShow();
             });
         });
         startSlideShow();
     }
 
-
-    // --- Language Translation ---
+    // Language Translation
     const translations = {
         en: { nav_features: "Features", nav_shop: "Shop", nav_commands: "Commands", nav_support: "Support", hero_title: "The Ultimate Tic-Tac-Toe Experience.", hero_subtitle: "Challenge your friends or our smart AI. Simple, fun, and competitive.", hero_cta_add: "Add to Discord", hero_cta_vote: "Vote for Bot", features_title: "Powerful Features", feature_1_title: "Play with Friends or Bot", feature_1_desc: "Challenge a friend for a classic match or test your skills against our smart AI.", feature_2_title: "Leaderboards & Stats", feature_2_desc: "Track your wins, losses, and draws. Climb the leaderboard to become the champion.", feature_3_title: "Multi-Language Support", feature_3_desc: "Play in Thai, English, or Japanese. The bot adapts to your preferred language.", commands_title: "All Commands", cmd_play: "Starts a game with another player.", cmd_playbot: "Starts a game against the AI bot.", cmd_stop: "Stops the current game.", cmd_leaderboard: "Shows the server's top players.", cmd_stats: "View your or another player's stats.", cmd_setlanguage: "Changes the bot's language.", footer_terms: "Terms of Service", footer_privacy: "Privacy Policy", follow_us: "Follow our developer" },
         th: { nav_features: "ฟีเจอร์", nav_shop: "ร้านค้า", nav_commands: "คำสั่ง", nav_support: "สนับสนุน", hero_title: "สุดยอดประสบการณ์ Tic-Tac-Toe", hero_subtitle: "ท้าทายเพื่อนของคุณหรือ AI อัจฉริยะของเรา เรียบง่าย สนุก และแข่งขันได้", hero_cta_add: "เพิ่มเข้าสู่ Discord", hero_cta_vote: "โหวตให้บอท", features_title: "ฟีเจอร์เด่น", feature_1_title: "เล่นกับเพื่อนหรือบอท", feature_1_desc: "ท้าทายเพื่อนในเกมคลาสสิก หรือทดสอบฝีมือของคุณกับ AI อัจฉริยะ", feature_2_title: "กระดานผู้นำและสถิติ", feature_2_desc: "ติดตามการชนะ, แพ้, และเสมอ ไต่อันดับเพื่อเป็นแชมป์เปี้ยน", feature_3_title: "รองรับหลายภาษา", feature_3_desc: "เล่นได้ทั้งภาษาไทย, อังกฤษ, หรือญี่ปุ่น บอทจะปรับตามภาษาที่คุณต้องการ", commands_title: "คำสั่งทั้งหมด", cmd_play: "เริ่มเกมกับผู้เล่นอื่น", cmd_playbot: "เริ่มเกมกับบอท AI", cmd_stop: "หยุดเกมปัจจุบัน", cmd_leaderboard: "แสดงอันดับผู้เล่นสูงสุด", cmd_stats: "ดูสถิติของคุณหรือผู้เล่นอื่น", cmd_setlanguage: "เปลี่ยนภาษาของบอท", footer_terms: "ข้อกำหนดในการให้บริการ", footer_privacy: "นโยบายความเป็นส่วนตัว", follow_us: "ติดตามผู้พัฒนา" },
@@ -94,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     langSwitcher.addEventListener('change', (e) => setLanguage(e.target.value));
     setLanguage(localStorage.getItem('xo-arena-lang') || 'en');
 
-    // --- Scroll Reveal Animation ---
+    // Scroll Reveal Animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) { entry.target.classList.add('visible'); }
