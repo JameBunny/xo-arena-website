@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Theme Switcher ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+        let newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
     // --- Interactive Cursor Glow ---
     const glow = document.querySelector('.cursor-glow');
     if (glow) {
@@ -28,11 +39,61 @@ document.addEventListener('DOMContentLoaded', () => {
     langSwitcher.addEventListener('change', (e) => setLanguage(e.target.value));
     setLanguage(localStorage.getItem('xo-arena-lang') || 'en');
 
-    // --- Bot Stats ---
-    setTimeout(() => {
-        document.getElementById('server-count').textContent = "1,520";
-        document.getElementById('user-count').textContent = "89,430";
-    }, 500);
+    // --- Real-time Bot Stats ---
+    const serverCountEl = document.getElementById('server-count');
+    const userCountEl = document.getElementById('user-count');
+
+    function animateValueUpdate(element) {
+        element.classList.add('updated');
+        setTimeout(() => {
+            element.classList.remove('updated');
+        }, 500);
+    }
+
+    async function fetchBotStats() {
+        // !! สำคัญ: ใส่ URL ของ API ที่คุณสร้างบนบอทของคุณตรงนี้
+        const apiUrl = 'https://your-bot-api-endpoint.com/stats'; // <--- แทนที่ URL นี้
+
+        try {
+            /* โค้ดสำหรับดึงข้อมูลจริง (ตอนนี้ปิดไว้)
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            
+            if (serverCountEl.textContent !== data.serverCount.toLocaleString()) {
+                serverCountEl.textContent = data.serverCount.toLocaleString();
+                animateValueUpdate(serverCountEl);
+            }
+            if (userCountEl.textContent !== data.userCount.toLocaleString()) {
+                userCountEl.textContent = data.userCount.toLocaleString();
+                animateValueUpdate(userCountEl);
+            }
+            */
+
+            // --- โค้ดตัวอย่างสำหรับแสดงผล (ลบออกเมื่อใช้ API จริง) ---
+            const randomServers = (1500 + Math.floor(Math.random() * 100)).toLocaleString();
+            const randomUsers = (89000 + Math.floor(Math.random() * 1000)).toLocaleString();
+            if (serverCountEl.textContent !== randomServers) {
+                serverCountEl.textContent = randomServers;
+                animateValueUpdate(serverCountEl);
+            }
+            if (userCountEl.textContent !== randomUsers) {
+                userCountEl.textContent = randomUsers;
+                animateValueUpdate(userCountEl);
+            }
+            // --- จบโค้ดตัวอย่าง ---
+
+        } catch (error) {
+            console.error("Failed to fetch bot stats:", error);
+            serverCountEl.textContent = 'N/A';
+            userCountEl.textContent = 'N/A';
+        }
+    }
+
+    // Fetch stats immediately and then every 30 seconds
+    fetchBotStats();
+    setInterval(fetchBotStats, 30000);
+
 
     // --- Scroll Reveal Animation ---
     const observer = new IntersectionObserver((entries) => {
