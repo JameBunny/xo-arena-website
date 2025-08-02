@@ -1,17 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme Switcher Logic
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        themeToggle.addEventListener('click', () => {
-            let newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    }
-
     // Hamburger Menu Logic
     const hamburgerButton = document.getElementById('hamburger-button');
     const navLinks = document.querySelector('.nav-links');
@@ -28,6 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.remove('noscroll');
         });
     });
+
+    // Hero Image 3D Mouse Follow
+    const heroImage = document.getElementById('hero-image');
+    const heroSection = document.querySelector('.hero-section');
+    if (heroImage && heroSection) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = heroSection;
+            const x = (clientX - offsetLeft - offsetWidth / 2) / (offsetWidth / 2);
+            const y = (clientY - offsetTop - offsetHeight / 2) / (offsetHeight / 2);
+
+            requestAnimationFrame(() => {
+                heroImage.style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 15}deg)`;
+            });
+        });
+        heroSection.addEventListener('mouseleave', () => {
+            requestAnimationFrame(() => {
+                heroImage.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        });
+    }
 
     // Language Translation
     const translations = {
@@ -47,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     langSwitcher.addEventListener('change', (e) => setLanguage(e.target.value));
     setLanguage(localStorage.getItem('xo-arena-lang') || 'en');
-
+    
+    // Scroll Reveal Animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) { entry.target.classList.add('visible'); }
