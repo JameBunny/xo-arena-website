@@ -1,3 +1,4 @@
+/* --- โค้ดเดิมทั้งหมด --- */
 :root {
     --bg-color: #10101A;
     --card-color: #191925;
@@ -11,88 +12,39 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+    margin: 0; background-color: var(--bg-color); color: var(--text-primary);
+    line-height: 1.6; scroll-behavior: smooth; overflow-x: hidden;
 }
 
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Header */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 .main-header {
-    background: rgba(16, 16, 26, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky; top: 0; z-index: 100;
+    background: rgba(16, 16, 26, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100;
 }
-nav {
-    height: 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+nav { height: 64px; display: flex; justify-content: space-between; align-items: center; }
 .logo-link { display: flex; align-items: center; text-decoration: none; color: var(--text-primary); }
 .logo-image { height: 32px; margin-right: 12px; border-radius: 8px; }
 .logo-text { font-size: 1.6rem; font-weight: 700; }
-.nav-links { display: none; } /* Hide for mobile first */
-@media (min-width: 768px) {
-    .nav-links { display: flex; align-items: center; gap: 10px; }
-}
+.nav-links { display: flex; align-items: center; gap: 10px; }
 .nav-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    padding: 8px 16px;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s;
+    color: var(--text-secondary); text-decoration: none; padding: 8px 16px; font-size: 1rem;
+    font-weight: 500; transition: color 0.3s;
 }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-right { display: flex; align-items: center; gap: 15px; }
 #lang-switcher {
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background: var(--card-color);
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 8px 12px;
-    color: var(--text-secondary);
+    border: 1px solid var(--border-color); border-radius: 8px; background: var(--card-color);
+    cursor: pointer; font-size: 1rem; padding: 8px 12px; color: var(--text-secondary);
 }
 #lang-switcher option { background: var(--card-color); color: var(--text-primary); }
 
-/* Hero Section */
 .hero-section {
-    padding: 120px 0;
-    text-align: center;
+    padding: 120px 0; text-align: center;
     background: linear-gradient(180deg, var(--bg-color) 0%, #13131f 100%);
 }
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.hero-section h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    letter-spacing: -2px;
-    line-height: 1.1;
-}
-.hero-section p {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 40px;
-    max-width: 600px;
-}
+.hero-content { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.hero-section h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -2px; line-height: 1.1; }
+.hero-section p { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; }
 .cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .btn {
     display: inline-block; padding: 14px 32px; border-radius: 12px; text-decoration: none;
@@ -102,63 +54,82 @@ nav {
 .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
 .btn-secondary { background-color: var(--secondary-color); color: var(--text-primary); }
 .btn-secondary:hover { background-color: #333348; transform: translateY(-2px); }
-
-/* Socials under CTA */
 .socials-hero { display: flex; justify-content: center; gap: 16px; margin-top: 30px; }
 .social-link {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 16px; border-radius: 10px; text-decoration: none;
-    font-weight: 500; transition: all 0.3s ease;
-    background-color: var(--secondary-color); color: var(--text-secondary);
-    font-size: 0.9rem;
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 10px;
+    text-decoration: none; font-weight: 500; transition: all 0.3s ease;
+    background-color: var(--secondary-color); color: var(--text-secondary); font-size: 0.9rem;
 }
 .social-link:hover { background-color: #333348; color: var(--text-primary); }
 .social-icon-svg { height: 18px; width: 18px; fill: var(--text-secondary); transition: fill 0.3s; }
 .social-link:hover .social-icon-svg { fill: var(--text-primary); }
-
-/* Content Sections */
 .content-section { padding: 100px 0; }
 .content-section:nth-of-type(odd) { background-color: var(--bg-color); }
 .section-title { font-size: 2.8rem; font-weight: 700; margin-bottom: 60px; text-align: center; }
-
 .features-grid, .commands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
 .feature-card, .command-card {
-    background-color: var(--card-color);
-    padding: 32px;
-    border-radius: 16px;
+    background-color: var(--card-color); padding: 32px; border-radius: 16px;
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .feature-card:hover, .command-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 .feature-card h3 { font-size: 1.5rem; margin-top: 0; margin-bottom: 12px; }
 .feature-card p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
-
 .command-card h3 { margin: 0 0 10px; font-family: 'SF Mono', 'Menlo', monospace; font-size: 1.2rem; }
 .command-card h3 span { color: var(--text-secondary); }
 .command-card p { font-size: 1rem; color: var(--text-secondary); margin: 0; }
-
-/* Footer */
 .footer { background-color: var(--card-color); border-top: 1px solid var(--border-color); color: var(--text-secondary); padding: 40px 0; text-align: center; }
 .footer .container { display: flex; flex-direction: column; gap: 20px; }
 .footer p { margin: 0; font-size: 0.9rem; }
 .footer-links { display: flex; justify-content: center; gap: 15px; }
 .footer-links a { color: var(--text-secondary); text-decoration: none; }
 .footer-links a:hover { color: var(--text-primary); }
-.footer-links span { display: none; } /* Hide separator */
+.footer-links span { display: none; }
 .social-links { margin-top: 10px; }
 .social-links p { margin-bottom: 15px; font-size: 1rem; color: var(--text-primary); }
 .social-icons { display: flex; justify-content: center; align-items: center; gap: 25px; }
 .social-icons a { line-height: 0; opacity: 0.7; transition: opacity 0.3s ease, transform 0.3s ease; }
 .social-icons a:hover { opacity: 1; transform: translateY(-3px); }
-.social-icons img { width: 28px; height: 28px; }
-
-/* Animation */
+.social-icons img { width: 28px; height: 28px; filter: brightness(0) invert(1); }
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* --- Hamburger Menu --- */
+.hamburger-menu {
+    display: none; /* ซ่อนบน Desktop */
+    background: none; border: none; padding: 0;
+    cursor: pointer; z-index: 101;
+    color: var(--text-primary);
+}
+.hamburger-menu .icon-close { display: none; }
+.hamburger-menu.active .icon-open { display: none; }
+.hamburger-menu.active .icon-close { display: block; }
+.hamburger-menu svg { width: 28px; height: 28px; }
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-links {
+        /* เปลี่ยนเป็นเมนูเต็มหน้าจอ */
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 100;
+    }
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    .nav-links a {
+        font-size: 1.5rem;
+    }
+    .hamburger-menu {
+        display: block; /* แสดงปุ่มบน Mobile */
+    }
     .hero-section h1 { font-size: 3rem; }
     .hero-section p { font-size: 1.1rem; }
     .section-title { font-size: 2.2rem; }
