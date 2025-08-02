@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - XO Arena Bot</title>
+    <link rel="stylesheet" href="legal.css">
+    <link rel="icon" href="https://i.imgur.com/T5I0a1g.png">
+</head>
+<body>
+    <div class="container">
+        <header class="legal-header">
+            <a href="index.html" class="back-link">&larr; Back to Home</a>
+            <select id="lang-switcher">
+                <option value="en">🇬🇧 English</option>
+                <option value="th">🇹🇭 ไทย</option>
+                <option value="ja">🇯🇵 日本語</option>
+            </select>
+        </header>
+        <main class="policy-box coming-soon">
+            <div id="en-content" class="lang-content">
+                <h1>Coming Soon</h1>
+                <p>Our shop is under construction. Please check back later!</p>
+            </div>
+            <div id="th-content" class="lang-content" style="display: none;">
+                <h1>พบกันเร็วๆ นี้</h1>
+                <p>ร้านค้าของเรากำลังอยู่ในระหว่างการพัฒนา โปรดกลับมาตรวจสอบอีกครั้งในภายหลัง!</p>
+            </div>
+            <div id="ja-content" class="lang-content" style="display: none;">
+                <h1>近日公開</h1>
+                <p>ショップは現在準備中です。後ほどもう一度ご確認ください！</p>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSwitcher = document.getElementById('lang-switcher');
+            const contentDivs = document.querySelectorAll('.lang-content');
+            const setPageLanguage = (lang) => {
+                contentDivs.forEach(div => { div.style.display = 'none'; });
+                const activeDiv = document.getElementById(lang + '-content');
+                if (activeDiv) { activeDiv.style.display = 'block'; }
+                localStorage.setItem('xo-arena-lang', lang);
+                langSwitcher.value = lang;
+            };
+            langSwitcher.addEventListener('change', (e) => setPageLanguage(e.target.value));
+            setPageLanguage(localStorage.getItem('xo-arena-lang') || 'en');
+        });
+    </script>
+</body>
+</html>
