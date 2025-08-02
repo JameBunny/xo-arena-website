@@ -78,23 +78,9 @@
                 <h2>ユーザーの権利</h2><p>ユーザーは以下の権利を有します:</p><ul><li>ボットが保持する自身のデータの削除を求める権利</li><li>特定のデータ処理の停止を求める権利</li><li>ボットが保持しているデータの詳細を問い合わせる権利</li></ul><p>これらの権利を行使するには、Discordサーバーにてご連絡ください。</p>
                 <h2>プライバシーポリシーの変更</h2><p>当ポリシーは、ボットの変更に応じて随時更新される場合があります。更新後にボットを引き続き使用することで、改定後のポリシーに同意したものと見なされます。</p>
                 <h2>お問い合わせ</h2><p>プライバシーポリシーに関するご質問は、Discordサーバーを通じてご連絡ください。</p>
-            </div>
+ </div>
         </main>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const langSwitcher = document.getElementById('lang-switcher');
-            const contentDivs = document.querySelectorAll('.lang-content');
-            const setPageLanguage = (lang) => {
-                contentDivs.forEach(div => { div.style.display = 'none'; });
-                const activeDiv = document.getElementById(lang + '-content');
-                if (activeDiv) { activeDiv.style.display = 'block'; }
-                localStorage.setItem('xo-arena-lang', lang);
-                langSwitcher.value = lang;
-            };
-            langSwitcher.addEventListener('change', (e) => setPageLanguage(e.target.value));
-            setPageLanguage(localStorage.getItem('xo-arena-lang') || 'en');
-        });
-    </script>
+    <script src="page_script.js"></script>
 </body>
 </html>
