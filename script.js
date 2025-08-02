@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
     // --- Theme Switcher Logic ---
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
@@ -18,13 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburgerButton = document.getElementById('hamburger-button');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body;
-
     hamburgerButton.addEventListener('click', () => {
         hamburgerButton.classList.toggle('active');
         navLinks.classList.toggle('active');
         body.classList.toggle('noscroll');
     });
-
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             hamburgerButton.classList.remove('active');
