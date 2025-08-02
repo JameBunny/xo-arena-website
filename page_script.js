@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme Switcher Logic
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Language Translation
     const translations = {
         en: { shop_title: "Shop", shop_subtitle: "Exclusive items from NosuTeam.", product1_name: "Nosu 1st Anniversary LINE Sticker", product1_price: "THB 35", buy_button: "Buy Now" },
         th: { shop_title: "ร้านค้า", shop_subtitle: "สินค้าสุดพิเศษจาก NosuTeam", product1_name: "สติ๊กเกอร์ไลน์ Nosu ครบรอบ 1 ปี", product1_price: "฿35", buy_button: "ซื้อเลย" },
