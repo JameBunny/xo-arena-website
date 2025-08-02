@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const translations = {
-        en: { shop_title: "Shop", shop_subtitle: "Exclusive items from NosuTeam.", product1_name: "Nosu 1st Anniversary LINE Sticker", product1_price: "THB 35", buy_button: "Buy Now" },
-        th: { shop_title: "ร้านค้า", shop_subtitle: "สินค้าสุดพิเศษจาก NosuTeam", product1_name: "สติ๊กเกอร์ไลน์ Nosu ครบรอบ 1 ปี", product1_price: "฿35", buy_button: "ซื้อเลย" },
-        ja: { shop_title: "ショップ", shop_subtitle: "NosuTeamからの限定アイテム", product1_name: "ノス1周年記念LINEスタンプ", product1_price: "THB 35", buy_button: "今すぐ購入" }
+        en: { shop_title: "Shop", shop_subtitle: "Exclusive items from NosuTeam.", product1_name: "Nosu 1st Anniversary LINE Sticker", product1_price: "THB 31", buy_button: "Buy Now" },
+        th: { shop_title: "ร้านค้า", shop_subtitle: "สินค้าสุดพิเศษจาก NosuTeam", product1_name: "สติ๊กเกอร์ไลน์ Nosu ครบรอบ 1 ปี", product1_price: "฿31", buy_button: "ซื้อเลย" },
+        ja: { shop_title: "ショップ", shop_subtitle: "NosuTeamからの限定アイテム", product1_name: "ノス1周年記念LINEスタンプ", product1_price: "THB 31", buy_button: "今すぐ購入" }
     };
 
     const langSwitcher = document.getElementById('lang-switcher');
