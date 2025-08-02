@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Theme Switcher ---
     const themeToggle = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', newTheme);
     });
 
-    // --- Interactive Cursor Glow ---
     const glow = document.querySelector('.cursor-glow');
     if (glow) {
         document.addEventListener('mousemove', (e) => {
@@ -20,29 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-    // --- Hero Image Follows Mouse ---
-    const heroImage = document.getElementById('hero-image');
-    if (heroImage) {
-        const heroSection = document.querySelector('.hero-section');
-        heroSection.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const { innerWidth, innerHeight } = window;
-            const x = (clientX - innerWidth / 2) / (innerWidth / 2);
-            const y = (clientY - innerHeight / 2) / (innerHeight / 2);
-            
-            requestAnimationFrame(() => {
-                heroImage.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
-            });
-        });
-        heroSection.addEventListener('mouseleave', () => {
-             requestAnimationFrame(() => {
-                heroImage.style.transform = 'rotateY(0deg) rotateX(0deg)';
-            });
-        });
-    }
-
-    // --- Language Translation ---
+    
     const translations = {
         en: { nav_features: "Features", nav_shop: "Shop", nav_commands: "Commands", nav_support: "Support", hero_title: "The Ultimate Tic-Tac-Toe Experience.", hero_subtitle: "Challenge your friends or our smart AI. Simple, fun, and competitive.", hero_cta_add: "Add to Discord", hero_cta_vote: "Vote for Bot", features_title: "Powerful Features", feature_1_title: "Play with Friends or Bot", feature_1_desc: "Challenge a friend for a classic match or test your skills against our smart AI.", feature_2_title: "Leaderboards & Stats", feature_2_desc: "Track your wins, losses, and draws. Climb the leaderboard to become the champion.", feature_3_title: "Multi-Language Support", feature_3_desc: "Play in Thai, English, or Japanese. The bot adapts to your preferred language.", commands_title: "All Commands", cmd_play: "Starts a game with another player.", cmd_playbot: "Starts a game against the AI bot.", cmd_stop: "Stops the current game.", cmd_leaderboard: "Shows the server's top players.", cmd_stats: "View your or another player's stats.", cmd_setlanguage: "Changes the bot's language.", footer_terms: "Terms of Service", footer_privacy: "Privacy Policy", follow_us: "Follow our developer" },
         th: { nav_features: "ฟีเจอร์", nav_shop: "ร้านค้า", nav_commands: "คำสั่ง", nav_support: "สนับสนุน", hero_title: "สุดยอดประสบการณ์ Tic-Tac-Toe", hero_subtitle: "ท้าทายเพื่อนของคุณหรือ AI อัจฉริยะของเรา เรียบง่าย สนุก และแข่งขันได้", hero_cta_add: "เพิ่มเข้าสู่ Discord", hero_cta_vote: "โหวตให้บอท", features_title: "ฟีเจอร์เด่น", feature_1_title: "เล่นกับเพื่อนหรือบอท", feature_1_desc: "ท้าทายเพื่อนในเกมคลาสสิก หรือทดสอบฝีมือของคุณกับ AI อัจฉริยะ", feature_2_title: "กระดานผู้นำและสถิติ", feature_2_desc: "ติดตามการชนะ, แพ้, และเสมอ ไต่อันดับเพื่อเป็นแชมป์เปี้ยน", feature_3_title: "รองรับหลายภาษา", feature_3_desc: "เล่นได้ทั้งภาษาไทย, อังกฤษ, หรือญี่ปุ่น บอทจะปรับตามภาษาที่คุณต้องการ", commands_title: "คำสั่งทั้งหมด", cmd_play: "เริ่มเกมกับผู้เล่นอื่น", cmd_playbot: "เริ่มเกมกับบอท AI", cmd_stop: "หยุดเกมปัจจุบัน", cmd_leaderboard: "แสดงอันดับผู้เล่นสูงสุด", cmd_stats: "ดูสถิติของคุณหรือผู้เล่นอื่น", cmd_setlanguage: "เปลี่ยนภาษาของบอท", footer_terms: "ข้อกำหนดในการให้บริการ", footer_privacy: "นโยบายความเป็นส่วนตัว", follow_us: "ติดตามผู้พัฒนา" },
@@ -61,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     langSwitcher.addEventListener('change', (e) => setLanguage(e.target.value));
     setLanguage(localStorage.getItem('xo-arena-lang') || 'en');
 
-    // --- Scroll Reveal Animation ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) { entry.target.classList.add('visible'); }
